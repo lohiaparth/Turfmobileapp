@@ -50,9 +50,9 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
                                     // You can add logic here to redirect users based on their type
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class); // Change to your main activity
-                                    startActivity(intent);
-                                    finish(); // Finish the login activity so the user can't go back to it
+//                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class); // Change to your main activity
+//                                    startActivity(intent);
+//                                    finish(); // Finish the login activity so the user can't go back to it
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(LoginActivity.this, "Login Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
