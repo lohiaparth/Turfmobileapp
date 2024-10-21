@@ -11,7 +11,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class SignupActivity extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
 
     private EditText nameSignup, emailSignup, contactSignup, ageSignup, passwordSignup, repasswordSignup;
     private Button btnSignup;
@@ -24,6 +33,8 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        mAuth = FirebaseAuth.getInstance();
 
         nameSignup = findViewById(R.id.nameSignup);
         emailSignup = findViewById(R.id.emailSignup);
@@ -62,7 +73,8 @@ public class SignupActivity extends AppCompatActivity {
                 } else if (!password.equals(rePassword)) {
                     Toast.makeText(SignupActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Add registration logic here
+                    // Register user in Firebase
+                    registerUser(email, password);
                     Toast.makeText(SignupActivity.this, "Signup Successful as " + userType, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -82,5 +94,38 @@ public class SignupActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    private void registerUser(String email, String password) {
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Store additional user details in Firestore
+                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                        String userId = firebaseUser.getUid();
+
+                        // Create a User object
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("name", nameSignup.getText().toString());
+                        user.put("email", email);
+                        user.put("contact", contactSignup.getText().toString());
+                        user.put("age", ageSignup.getText().toString());
+                        user.put("userType", userType); // This stores whether the user is "User", "Owner", or "Admin"
+
+                        // Add a new document with a generated ID
+                        db.collection("users").document(userId).set(user)
+                                .addOnSuccessListener(aVoid -> {
+                                    Toast.makeText(SignupActivity.this, "User Registered Successfully!", Toast.LENGTH_SHORT).show();
+//                                    Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+//                                    startActivity(intent);
+//                                    finish();
+                                })
+                                .addOnFailureListener(e -> Toast.makeText(SignupActivity.this, "Failed to save user info", Toast.LENGTH_SHORT).show());
+                    } else {
+                        Toast.makeText(SignupActivity.this, "Authentication Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }
