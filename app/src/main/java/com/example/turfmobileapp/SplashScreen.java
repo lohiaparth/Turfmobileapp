@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class SplashScreen extends AppCompatActivity {
 
     private static final int SPLASH_SCREEN_DELAY = 5000; // 5 seconds
 
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // Intent to transition to the next activity (LoginActivity in this case)
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
                 startActivity(intent);
                 finish(); // Finish this activity to prevent returning to it
             }
