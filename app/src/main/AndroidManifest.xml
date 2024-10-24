@@ -17,7 +17,7 @@
         <activity android:name=".FindTurf"/>
         <activity android:name=".ListTeam"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivity"/>
         <!-- Splash Screen Activity -->
         <activity android:name=".SplashScreen"
             android:exported="true">
