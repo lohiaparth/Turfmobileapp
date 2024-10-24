@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -47,12 +48,29 @@ public class LoginActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // Sign-in success, navigate to another activity
                                     FirebaseUser user = auth.getCurrentUser();
-                                    Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                    if (user != null) {
+                                        // Get userType from Firestore
+                                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                        db.collection("users").document(user.getUid())
+                                                .get()
+                                                .addOnSuccessListener(documentSnapshot -> {
+                                                    if (documentSnapshot.exists()) {
+                                                        String userType = documentSnapshot.getString("userType");
 
-                                    // You can add logic here to redirect users based on their type
-//                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class); // Change to your main activity
-//                                    startActivity(intent);
-//                                    finish(); // Finish the login activity so the user can't go back to it
+                                                        // Pass userType to MainActivity
+                                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                                        intent.putExtra("userType", userType);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    } else {
+                                                        Toast.makeText(LoginActivity.this, "User not found in Firestore", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                })
+                                                .addOnFailureListener(e -> {
+                                                    Toast.makeText(LoginActivity.this, "Error retrieving userType: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                });
+                                    }
+                                    Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(LoginActivity.this, "Login Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
