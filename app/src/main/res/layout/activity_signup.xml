@@ -24,11 +24,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/archivo_black"
-                android:text="Sign Up"
+                android:fontFamily="@font/anton"
+                android:text="SIGN UP"
                 android:textAlignment="center"
                 android:textColor="@color/darkgreen"
-                android:textSize="45sp"
+                android:textSize="70sp"
                 android:textStyle="bold" />
 
             <!-- User Type RadioGroup -->
