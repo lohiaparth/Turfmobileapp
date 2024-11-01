@@ -1,18 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/leafgreen">
 
+    <!-- Heading Text -->
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/findTurfHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="188dp"
-        android:layout_marginTop="338dp"
         android:text="Find Turf"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textSize="30sp"
+        android:textColor="@color/darkgreen"
+        android:textStyle="bold"
+        android:fontFamily="@font/archivo_black"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="16dp" />
+
+    <!-- Filter Buttons -->
+    <LinearLayout
+        android:id="@+id/filterButtonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/areaFilterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:text="Area"
+            android:textColor="@color/black"
+            android:layout_marginEnd="8dp"
+            app:cornerRadius="8dp" />
+
+        <Button
+            android:id="@+id/sportsFilterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:text="Sports"
+            android:textColor="@color/black"
+            android:layout_marginEnd="8dp"
+            app:cornerRadius="8dp" />
+
+        <Button
+            android:id="@+id/priceFilterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:text="Price"
+            android:textColor="@color/black"
+            app:cornerRadius="8dp" />
+    </LinearLayout>
+
+    <!-- Search Bar -->
+    <LinearLayout
+        android:id="@+id/searchBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/border_green"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Search Name, Area"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"
+            android:textColorHint="@color/black" />
+
+        <ImageView
+            android:id="@+id/toggleImageView"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/baseline_search_24"/>
+    </LinearLayout>
+
+    <!-- Card for Displaying Turf Information -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/turfInfoCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:id="@+id/turfInfoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@color/white">
+
+            <!-- Placeholder Image -->
+            <ImageView
+                android:id="@+id/turfImageView"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/turf" />
+
+            <!-- Turf Information -->
+            <TextView
+                android:id="@+id/turfNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SM Sport Arena"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/sportsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Football, Cricket"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/locationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Andheri(W)"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/contactText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8668674185"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/priceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rs.1500/hr"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="4dp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
