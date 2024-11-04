@@ -8,4 +8,6 @@
     <color name="leafgreen">#A7C957</color>
     <color name="green">#6A994E</color>
     <color name="darkgreen">#386641</color>
+    <color name="leaderHighlightColor">#FFC107</color>
+    <color name="defaultTextColor">#8BC34A</color>
 </resources>
