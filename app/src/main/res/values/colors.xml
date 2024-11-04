@@ -10,4 +10,7 @@
     <color name="darkgreen">#386641</color>
     <color name="leaderHighlightColor">#FFC107</color>
     <color name="defaultTextColor">#8BC34A</color>
+    <color name="selectedButtonColor">#A9E26F</color> <!-- Color when button is selected -->
+    <color name="defaultButtonColor">#D3D3D3</color> <!-- Color when button is not selected -->
+    <color name="lightGray"></color>
 </resources>

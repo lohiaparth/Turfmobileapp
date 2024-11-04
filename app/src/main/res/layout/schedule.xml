@@ -1,14 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/white">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/scheduleTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="schedule"
-        tools:layout_editor_absoluteX="175dp"
-        tools:layout_editor_absoluteY="346dp" />
+        android:fontFamily="@font/anton"
+        android:text="Schedule"
+        android:textColor="@color/red"
+        android:textSize="70sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/selectDateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Date"
+        android:fontFamily="@font/archivo_black"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/scheduleTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/leafgreen"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/selectedDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date: Today"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/selectDateButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/archivo_black"/>
+
+    <GridLayout
+        android:id="@+id/timetableGridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:columnCount="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectedDateText"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints">
+
+        <TextView android:text="8:00 AM - 9:00 AM" />
+
+        <TextView
+            android:id="@+id/slot_8_9"
+            android:text="Available" />
+
+        <TextView android:text="9:00 AM - 10:00 AM" />
+
+        <TextView
+            android:id="@+id/slot_9_10"
+            android:text="Available" />
+
+        <TextView android:text="10:00 AM - 11:00 AM" />
+
+        <TextView
+            android:id="@+id/slot_10_11"
+            android:text="Available" />
+
+        <TextView android:text="12:00 AM - 01:00 pM" />
+
+        <TextView
+            android:id="@+id/slot_11_12"
+            android:text="Available" />
+
+        <TextView android:text="8:00 AM - 9:00 AM" />
+
+        <TextView
+            android:id="@+id/slot_12_1"
+            android:text="Available" />
+
+        <TextView android:text="9:00 AM - 10:00 AM" />
+
+        <TextView
+            android:id="@+id/slot_1_2"
+            android:text="Available" />
+
+        <TextView android:text="10:00 AM - 11:00 AM" />
+
+        <TextView
+            android:id="@+id/slot_2_3"
+            android:text="Available" />
+
+        <TextView android:text="12:00 AM - 01:00 pM" />
+
+        <TextView
+            android:id="@+id/slot_3_4"
+            android:text="Available" />
+
+        <TextView android:text="12:00 AM - 01:00 pM" />
+
+        <TextView
+            android:id="@+id/slot_4_5"
+            android:text="Available" />
+
+        <TextView android:text="12:00 AM - 01:00 pM" />
+
+        <TextView
+            android:id="@+id/slot_5_6"
+            android:text="Available" />
+    </GridLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
