@@ -9,130 +9,73 @@
         android:id="@+id/teamStatusTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:paddingBottom="16dp" />
+        android:fontFamily="@font/anton"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="16dp"
+        android:text="TEAM STATUS"
+        android:textColor="@color/red"
+        android:textSize="70sp" />
 
-    <Button
-        android:id="@+id/createteam_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Create Team" />
+
+    <!--    <Button-->
+<!--        android:id="@+id/listmyteam_btn"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:enabled="true"-->
+<!--        android:text="List Team" />-->
 
     <Button
         android:id="@+id/jointeam_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Join Team" />
+        android:backgroundTint="@color/leafgreen"
+        android:text="Join Team"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:fontFamily="@font/archivo_black"/>
 
     <Button
-        android:id="@+id/listmyteam_btn"
+        android:id="@+id/createteam_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:enabled="true"
-        android:text="List Team" />
+        android:backgroundTint="@color/leafgreen"
+        android:text="Create Team"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:fontFamily="@font/archivo_black"/>
 
     <EditText
         android:id="@+id/team_name_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:background="@drawable/border_green"
+        android:drawableLeft="@drawable/baseline_email_24"
+        android:drawablePadding="8dp"
         android:hint="Enter Team Name:"
-        android:inputType="text" />
+        android:ems="10"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/submit_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit" />
+        android:backgroundTint="@color/green"
+        android:layout_marginTop="5dp"
+        android:text="Submit"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:fontFamily="@font/archivo_black"/>
 
     <Button
         android:id="@+id/abandonteam_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Leave Team" /> <!-- Disabled by default -->
+        android:backgroundTint="@color/red"
+        android:text="Leave Team"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:fontFamily="@font/archivo_black"/> <!-- Disabled by default -->
 
 </LinearLayout>
-<!--<LinearLayout-->
-<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:orientation="vertical"-->
-<!--    android:padding="16dp"-->
-<!--    android:background="@color/beige">-->
-
-<!--    &lt;!&ndash; Team Status Text View &ndash;&gt;-->
-<!--    <TextView-->
-<!--        android:id="@+id/teamStatusTextView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:textSize="18sp"-->
-<!--        android:paddingBottom="16dp"-->
-<!--        android:textColor="@color/darkgreen"-->
-<!--        android:text="Team Status" />-->
-
-<!--    &lt;!&ndash; Create Team Button &ndash;&gt;-->
-<!--    <Button-->
-<!--        android:id="@+id/createteam_btn"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Create Team"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:backgroundTint="@color/leafgreen"-->
-<!--        android:layout_marginBottom="8dp" />-->
-
-<!--    &lt;!&ndash; Join Team Button &ndash;&gt;-->
-<!--    <Button-->
-<!--        android:id="@+id/jointeam_btn"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Join Team"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:backgroundTint="@color/lavender"-->
-<!--        android:layout_marginBottom="8dp" />-->
-
-<!--    &lt;!&ndash; List Team Button &ndash;&gt;-->
-<!--&lt;!&ndash;    <Button&ndash;&gt;-->
-<!--&lt;!&ndash;        android:id="@+id/listmyteam_btn"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:text="List Team"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textColor="@color/white"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:backgroundTint="@color/green"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_marginBottom="8dp" />&ndash;&gt;-->
-
-<!--    &lt;!&ndash; Team Name Input Field &ndash;&gt;-->
-
-<!--    &lt;!&ndash; Submit Button &ndash;&gt;-->
-<!--    <EditText-->
-<!--        android:id="@+id/team_name_input"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="16dp"-->
-<!--        android:backgroundTint="@color/white"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Enter Team Name:"-->
-<!--        android:hintTextColor="@color/black"-->
-<!--        android:inputType="text"-->
-<!--        android:padding="12dp"-->
-<!--        android:textColor="@color/black" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/submit_btn"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Submit"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:backgroundTint="@color/darkgreen"-->
-<!--        android:layout_marginBottom="8dp" />-->
-
-<!--    &lt;!&ndash; Abandon Team Button &ndash;&gt;-->
-<!--    <Button-->
-<!--        android:id="@+id/abandonteam_btn"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Leave Team"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:backgroundTint="@color/red"-->
-<!--        android:enabled="false" />-->
-
-<!--</LinearLayout>-->
