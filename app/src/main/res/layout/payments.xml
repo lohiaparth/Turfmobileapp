@@ -7,13 +7,26 @@
     android:background="@color/leafgreen"
     tools:context=".Payments">
 
+    <!-- Payment Details Display -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        android:gravity="center">
+
+    </LinearLayout>
+
     <!-- Payment Mode Buttons -->
     <LinearLayout
         android:id="@+id/paymentModes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/amountTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
@@ -27,7 +40,7 @@
             android:text="CARD"
             android:backgroundTint="@color/white"
             android:textColor="@color/black"
-            app:cornerRadius="10dp"/>
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnGpay"
@@ -37,7 +50,7 @@
             android:text="GPAY"
             android:backgroundTint="@color/white"
             android:textColor="@color/black"
-            app:cornerRadius="10dp"/>
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnCash"
@@ -47,7 +60,7 @@
             android:text="CASH"
             android:backgroundTint="@color/white"
             android:textColor="@color/black"
-            app:cornerRadius="10dp"/>
+            app:cornerRadius="10dp" />
     </LinearLayout>
 
     <!-- Payment Details CardView -->
@@ -79,7 +92,17 @@
                 android:textColor="@color/darkgreen"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center" />
+
+            <!-- Display Selected Payment Information -->
+            <TextView
+                android:id="@+id/selectedPaymentInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:text="Selected Payment Method"
+                android:textSize="18sp" />
 
             <!-- Card Payment Fields -->
             <LinearLayout
@@ -91,27 +114,30 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
+                    android:id="@+id/etCardNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Card Number"
                     android:background="@drawable/border_green"
-                    android:padding="12dp"/>
+                    android:padding="12dp" />
 
                 <EditText
+                    android:id="@+id/etExpiryDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:hint="Expiry Date"
+                    android:hint="Expiry Date (MM/YY)"
                     android:background="@drawable/border_green"
-                    android:padding="12dp"/>
+                    android:padding="12dp" />
 
                 <EditText
+                    android:id="@+id/etCVV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:hint="CVV"
                     android:background="@drawable/border_green"
-                    android:padding="12dp"/>
+                    android:padding="12dp" />
             </LinearLayout>
 
             <!-- GPay Payment Instructions -->
@@ -129,15 +155,16 @@
                     android:text="Scan QR code with GPay"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center" />
 
                 <!-- Placeholder for QR Code -->
                 <ImageView
+                    android:id="@+id/qrCodePlaceholder"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginTop="12dp"
                     android:background="@color/leafgreen"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center" />
             </LinearLayout>
 
             <!-- Cash Payment Note -->
@@ -155,10 +182,36 @@
                     android:text="An extra ₹50 will be charged for cash payments"
                     android:textColor="@color/red"
                     android:textSize="16sp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center" />
             </LinearLayout>
 
             <!-- Pay Now Button -->
+
+            <TextView
+                android:id="@+id/amountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Amount: $0.00"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date: Not Selected"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/timeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time: Not Selected"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
             <Button
                 android:id="@+id/btnPayNow"
                 android:layout_width="match_parent"
@@ -167,7 +220,8 @@
                 android:backgroundTint="@color/leafgreen"
                 android:text="Pay Now"
                 android:textSize="18sp"
-                app:cornerRadius="20dp"/>
+                android:textColor="@color/white"
+                app:cornerRadius="20dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

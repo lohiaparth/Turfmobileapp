@@ -39,11 +39,11 @@
         <activity android:name=".ViewTeam" />
         <activity android:name=".FindTurf" />
         <activity android:name=".ListTeam" />
-
         <activity android:name=".ListTurf" />
         <activity android:name=".Payments" />
         <activity android:name=".Requests" />
         <activity android:name=".Schedule" />
+        <activity android:name=".BookingPage" />
 
         <meta-data
             android:name="preloaded_fonts"

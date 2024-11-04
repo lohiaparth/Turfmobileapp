@@ -72,7 +72,6 @@
         android:layout_marginBottom="16dp"
         android:gravity="center_vertical">
 
-
         <EditText
             android:id="@+id/searchEditText"
             android:layout_width="0dp"
@@ -91,80 +90,13 @@
             android:src="@drawable/baseline_search_24" />
     </LinearLayout>
 
-    <!-- Card for Displaying Turf Information -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/turfInfoCard"
+    <!-- RecyclerView for Turfs -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/turfsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="8dp">
-
-        <LinearLayout
-            android:id="@+id/turfInfoLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:background="@drawable/border_green">
-
-            <!-- Placeholder Image -->
-            <ImageView
-                android:id="@+id/turfImageView"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:src="@drawable/turf" />
-
-            <!-- Turf Information -->
-            <TextView
-                android:id="@+id/turfNameText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/archivo_black"
-                android:text="SM Sport Arena"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/sportsText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/archivo_black"
-                android:text="Football, Cricket"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/locationText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/archivo_black"
-                android:text="Andheri(W)"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/contactText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/archivo_black"
-                android:text="8668674185"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/priceText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/archivo_black"
-                android:text="Rs.1500/hr"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="16dp"
+        android:clipToPadding="false" />
 
 </LinearLayout>
