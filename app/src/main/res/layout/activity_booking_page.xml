@@ -1,64 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Title TextView for "BOOKING" -->
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/anton"
+        android:text="BOOKING"
+        android:textColor="@color/red"
+        android:textSize="70sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- First Name EditText -->
     <EditText
         android:id="@+id/firstName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:hint="First Name"
-        android:padding="12dp"/>
+        android:layout_marginTop="16dp"
+        android:background="@drawable/border_green"
+        android:drawableLeft="@drawable/baseline_email_24"
+        android:drawablePadding="8dp"
+        android:hint="Enter Team Name"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView2" />
 
+    <!-- Hours EditText -->
     <EditText
         android:id="@+id/hours"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:hint="Hours"
-        android:padding="12dp" />
+        android:layout_marginTop="12dp"
+        android:background="@drawable/border_green"
+        android:drawableLeft="@drawable/baseline_email_24"
+        android:drawablePadding="8dp"
+        android:hint="No. of Hours"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/firstName" />
+
+    <!-- Select Date TextView -->
+
+    <!-- Date Picker Button -->
+
+    <!-- Select Time TextView -->
+
+    <!-- Time Picker Button -->
 
     <TextView
         android:id="@+id/dateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Date" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="Select Date"
+        app:layout_constraintEnd_toStartOf="@+id/datePickerBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hours"
+        android:textSize="18dp"
+        android:fontFamily="@font/archivo_black"
+        android:textColor="@color/black"/>
+
+    <!-- Final Amount TextView -->
 
     <Button
         android:id="@+id/datePickerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pick Date" />
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        android:text="Pick Date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hours"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/darkgreen"
+        android:textSize="15dp"
+        android:fontFamily="@font/archivo_black"/>
 
     <TextView
         android:id="@+id/timeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Time" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="Select Time"
+        app:layout_constraintEnd_toStartOf="@+id/timePickerBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/datePickerBtn"
+        android:textSize="18dp"
+        android:fontFamily="@font/archivo_black"
+        android:textColor="@color/black"/>
+
+    <!-- Calculate Amount Button -->
+
+    <!-- Pay Now Button -->
 
     <Button
         android:id="@+id/timePickerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pick Time" />
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="4dp"
+        android:text="Pick Time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datePickerBtn"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/darkgreen"
+        android:textSize="15dp"
+        android:fontFamily="@font/archivo_black"/>
 
     <TextView
         android:id="@+id/finalAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total: Rs. " />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:text="Total: Rs. "
+        app:layout_constraintEnd_toStartOf="@+id/calculateAmountBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timePickerBtn"
+        android:textSize="18dp"
+        android:fontFamily="@font/archivo_black"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/calculateAmountBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="4dp"
         android:text="Calculate Amount"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timePickerBtn"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/darkgreen"
+        android:textSize="15dp"
+        android:fontFamily="@font/archivo_black"/>
 
     <Button
         android:id="@+id/payNowBtn"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Pay Now" />
-</LinearLayout>
+        android:layout_marginTop="16dp"
+        android:text="Pay Now"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calculateAmountBtn"
+        android:backgroundTint="@color/leafgreen"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
