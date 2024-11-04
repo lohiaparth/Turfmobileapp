@@ -115,7 +115,8 @@ public class SignupActivity extends AppCompatActivity {
                         user.put("email", email);
                         user.put("contact", contact);
                         user.put("age", age);
-                        user.put("userType", userType); // This stores whether the user is "User", "Owner", or "Admin"
+                        user.put("userType", userType);// This stores whether the user is "User", "Owner", or "Admin"
+                        user.put("isTeamLeader",false);//   default
 
                         // Add a new document with the user ID as the document ID
                         db.collection("users").document(userId).set(user)

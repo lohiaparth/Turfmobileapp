@@ -43,6 +43,12 @@
         android:id="@+id/submit_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit" /> <!-- Disabled by default -->
+        android:text="Submit" />
+
+    <Button
+        android:id="@+id/abandonteam_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" /> <!-- Disabled by default -->
 
 </LinearLayout>

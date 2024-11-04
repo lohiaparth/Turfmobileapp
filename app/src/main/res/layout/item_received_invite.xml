@@ -1,0 +1,49 @@
+<!-- res/layout/item_received_invite.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_green"
+    android:backgroundTint="@color/white"
+    android:orientation="horizontal"
+    android:layout_marginTop="16dp"
+    android:padding="8dp">
+
+
+    <TextView
+        android:id="@+id/emailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:fontFamily="@font/archivo_black"
+        android:padding="8dp"
+        android:text="siddhidmahajan@gmail.com"
+        android:textColor="@android:color/black" />
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_weight="1" />
+
+    <ImageButton
+        android:id="@+id/acceptButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/border_green"
+        android:backgroundTint="@color/darkgreen"
+        android:contentDescription="Accept"
+        android:src="@drawable/baseline_check_24" />
+
+    <ImageButton
+        android:id="@+id/declineButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/border_green"
+        android:backgroundTint="@color/darkgreen"
+        android:contentDescription="Decline"
+        android:src="@drawable/baseline_close_24" />
+
+</LinearLayout>
+
