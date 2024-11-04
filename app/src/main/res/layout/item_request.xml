@@ -2,8 +2,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@color/white"
-    android:padding="16dp"
+    android:background="@drawable/border_green"
+    android:padding="12dp"
     android:layout_marginBottom="8dp">
 
     <!-- Request Info -->
@@ -17,41 +17,44 @@
             android:id="@+id/teamNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Team Name"
+            android:text="Team Name:"
             android:textSize="16sp"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+            android:textColor="@color/darkgreen"
+            android:fontFamily="@font/archivo_black"/>
 
         <TextView
             android:id="@+id/playersText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No. of players"
-            android:textSize="14sp"
-            android:textColor="@color/black" />
+            android:text="No. of players:"
+            android:textSize="16sp"
+            android:fontFamily="@font/archivo_black"
+            android:textColor="@color/darkgreen" />
 
         <TextView
             android:id="@+id/timeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Time"
-            android:textSize="14sp"
-            android:textColor="@color/black" />
+            android:text="Time:"
+            android:textSize="16sp"
+            android:fontFamily="@font/archivo_black"
+            android:textColor="@color/darkgreen" />
     </LinearLayout>
 
     <!-- Approve and Decline Buttons -->
     <ImageView
         android:id="@+id/approveButton"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/baseline_check_24"
+        android:src="@drawable/baseline_check_circle_24"
         android:contentDescription="Approve Request" />
 
     <ImageView
         android:id="@+id/declineButton"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:src="@drawable/baseline_cancel_24"
         android:contentDescription="Decline Request" />
 </LinearLayout>
+
