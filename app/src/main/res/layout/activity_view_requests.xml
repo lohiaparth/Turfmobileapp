@@ -19,7 +19,6 @@ android:layout_height="match_parent">
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
-<!-- RecyclerView to display team members dynamically -->
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/membersRecyclerView"
     android:layout_width="0dp"
@@ -33,4 +32,9 @@ android:layout_height="match_parent">
     app:layout_constraintEnd_toEndOf="parent"
     tools:listitem="@layout/item_request" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/requestRecyclerView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:clipToPadding="false"-->
+<!--        />-->
