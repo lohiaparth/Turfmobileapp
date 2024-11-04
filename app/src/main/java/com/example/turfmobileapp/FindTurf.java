@@ -60,7 +60,7 @@ public class FindTurf extends AppCompatActivity {
         toggleImageView = findViewById(R.id.toggleImageView);
         areaFilterButton = findViewById(R.id.areaFilterButton);
         sportsFilterButton = findViewById(R.id.sportsFilterButton);
-        priceFilterButton = findViewById(R.id.priceFilterButton);
+        //priceFilterButton = findViewById(R.id.priceFilterButton);
 
         toggleImageView.setOnClickListener(v -> {
             String query = searchEditText.getText().toString().trim().toLowerCase();
