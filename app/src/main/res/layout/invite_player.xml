@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- White Container for "INVITE" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="380dp"
+        android:padding="16dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/anton"
+            android:text="INVITE"
+            android:textColor="@color/red"
+            android:textSize="70sp" />
+
+        <EditText
+            android:id="@+id/emailInvite"
+            android:layout_width="377dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/border_green"
+            android:drawableLeft="@drawable/baseline_email_24"
+            android:drawablePadding="8dp"
+            android:hint="Email"
+            android:padding="8dp"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnInvite"
+            android:layout_marginBottom="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/leafgreen"
+            android:fontFamily="@font/archivo_black"
+            android:text="Send Invite"
+            android:textSize="15sp"
+            app:cornerRadius="20dp" />
+
+    </LinearLayout>
+
+    <!-- Green Container for "REQUEST" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="350dp"
+        android:background="@color/leafgreen"
+        android:orientation="vertical"
+        android:padding="16dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:fontFamily="@font/anton"
+            android:text="REQUEST"
+            android:textColor="@color/red"
+            android:textSize="70sp" />
+
+        <!-- Email and Accept/Decline Buttons -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewReceivedRequests"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            tools:listitem="@layout/item_received_invite" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

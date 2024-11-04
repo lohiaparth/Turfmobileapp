@@ -1,0 +1,54 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/teamStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:paddingBottom="16dp" />
+
+    <Button
+        android:id="@+id/createteam_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Team" />
+
+    <Button
+        android:id="@+id/jointeam_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Join Team" />
+
+    <Button
+        android:id="@+id/listmyteam_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:text="List Team" />
+
+    <EditText
+        android:id="@+id/team_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter Team Name:"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
+
+    <Button
+        android:id="@+id/abandonteam_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" /> <!-- Disabled by default -->
+
+</LinearLayout>
