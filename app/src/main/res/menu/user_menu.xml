@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/user_invite"
+        android:icon="@drawable/baseline_sports_cricket_24"
+        android:title="Invite Player" />
+    <item
+        android:id="@+id/user_view_team"
+        android:icon="@drawable/baseline_attach_money_24"
+        android:title="View Team" />
+    <item
+        android:id="@+id/user_find_turf"
+        android:icon="@drawable/baseline_sports_cricket_24"
+        android:title="Find Turf" />
+</menu>

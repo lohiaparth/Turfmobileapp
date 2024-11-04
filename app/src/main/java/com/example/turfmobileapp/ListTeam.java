@@ -115,7 +115,7 @@ public class ListTeam extends AppCompatActivity {
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
                         currentTeamId = documentSnapshot.getString("teamId");
-                        isTeamLeader = documentSnapshot.getBoolean("isTeamLeader");
+//                        isTeamLeader = documentSnapshot.getBoolean("isTeamLeader");
 
                         // Update UI based on user's team status
                         if (currentTeamId != null) {
