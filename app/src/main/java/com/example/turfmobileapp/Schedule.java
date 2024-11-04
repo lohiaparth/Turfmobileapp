@@ -100,24 +100,24 @@ public class Schedule extends AppCompatActivity {
             case "11:00":
                 ((TextView) findViewById(R.id.slot_11_12)).setText(teamName);
                 break;
-            case "12:00":
-                ((TextView) findViewById(R.id.slot_12_1)).setText(teamName);
-                break;
-            case "1:00":
-                ((TextView) findViewById(R.id.slot_1_2)).setText(teamName);
-                break;
-            case "2:00":
-                ((TextView) findViewById(R.id.slot_2_3)).setText(teamName);
-                break;
-            case "3:00":
-                ((TextView) findViewById(R.id.slot_3_4)).setText(teamName);
-                break;
-            case "4:00":
-                ((TextView) findViewById(R.id.slot_4_5)).setText(teamName);
-                break;
-            case "5:00":
-                ((TextView) findViewById(R.id.slot_5_6)).setText(teamName);
-                break;
+//            case "12:00":
+//                ((TextView) findViewById(R.id.slot_12_1)).setText(teamName);
+//                break;
+//            case "1:00":
+//                ((TextView) findViewById(R.id.slot_1_2)).setText(teamName);
+//                break;
+//            case "2:00":
+//                ((TextView) findViewById(R.id.slot_2_3)).setText(teamName);
+//                break;
+//            case "3:00":
+//                ((TextView) findViewById(R.id.slot_3_4)).setText(teamName);
+//                break;
+//            case "4:00":
+//                ((TextView) findViewById(R.id.slot_4_5)).setText(teamName);
+//                break;
+//            case "5:00":
+//                ((TextView) findViewById(R.id.slot_5_6)).setText(teamName);
+//                break;
             default:
                 Log.w("Schedule", "Unexpected time slot: " + timeSlot);
                 break;

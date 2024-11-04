@@ -44,7 +44,7 @@ public class ListTeam extends AppCompatActivity {
         currentUser = mAuth.getCurrentUser();
 
         // Initialize UI elements
-        listMyTeamBtn = findViewById(R.id.listmyteam_btn);
+//        listMyTeamBtn = findViewById(R.id.listmyteam_btn);
         submitBtn = findViewById(R.id.submit_btn);
         createTeamBtn = findViewById(R.id.createteam_btn);
         joinTeamBtn = findViewById(R.id.jointeam_btn);
@@ -62,7 +62,7 @@ public class ListTeam extends AppCompatActivity {
         createTeamBtn.setOnClickListener(view -> showTeamNameInput());
         submitBtn.setOnClickListener(view -> submitTeamName());
         joinTeamBtn.setOnClickListener(view -> joinTeam());
-        listMyTeamBtn.setOnClickListener(view -> listMyTeam());
+//        listMyTeamBtn.setOnClickListener(view -> listMyTeam());
         abandonTeamBtn.setOnClickListener(view -> abandonTeam()); // Set click listener for abandon team button
     }
 
@@ -86,7 +86,7 @@ public class ListTeam extends AppCompatActivity {
     private void updateUIBasedOnTeamStatus() {
         if (currentTeamId != null) {
             // User is part of a team
-            listMyTeamBtn.setVisibility(View.VISIBLE);
+//            listMyTeamBtn.setVisibility(View.VISIBLE);
             createTeamBtn.setEnabled(false);
             createTeamBtn.setVisibility(View.INVISIBLE);
             teamNameInput.setVisibility(View.INVISIBLE);
