@@ -1,15 +1,18 @@
 package com.example.turfmobileapp;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;  // Import TextView for displaying amount
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Payments extends AppCompatActivity {
 
     private Button btnCard, btnGpay, btnCash;
     private LinearLayout cardPaymentLayout, gpayPaymentLayout, cashPaymentLayout;
+    private TextView amountTextView, dateTextView, timeTextView; // TextViews to display the data
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,13 @@ public class Payments extends AppCompatActivity {
         gpayPaymentLayout = findViewById(R.id.gpayPaymentLayout);
         cashPaymentLayout = findViewById(R.id.cashPaymentLayout);
 
+        amountTextView = findViewById(R.id.amountTextView);
+        dateTextView = findViewById(R.id.dateTextView);
+        timeTextView = findViewById(R.id.timeTextView);
+
+        // Retrieve intent data from BookingPage
+        retrieveIntentData();
+
         // Set default visibility (e.g., default to "CARD" mode)
         showCardPayment();
 
@@ -35,6 +45,24 @@ public class Payments extends AppCompatActivity {
         btnCash.setOnClickListener(v -> showCashPayment());
     }
 
+    // Method to retrieve data from the intent
+    private void retrieveIntentData() {
+        String finalAmount = getIntent().getStringExtra("finalAmount");
+        String date = getIntent().getStringExtra("date");
+        String time = getIntent().getStringExtra("time");
+
+        // Set the text for TextViews to display the received data
+        if (finalAmount != null) {
+            amountTextView.setText(finalAmount);
+        }
+        if (date != null) {
+            dateTextView.setText(date);
+        }
+        if (time != null) {
+            timeTextView.setText(time);
+        }
+    }
+
     // Method to show the card payment layout
     @SuppressLint("UseCompatLoadingForColorStateLists")
     private void showCardPayment() {
@@ -42,7 +70,6 @@ public class Payments extends AppCompatActivity {
         gpayPaymentLayout.setVisibility(View.GONE);
         cashPaymentLayout.setVisibility(View.GONE);
 
-        // Update button styles (optional - to indicate selection)
         btnCard.setBackgroundTintList(getResources().getColorStateList(R.color.selectedButtonColor));
         btnGpay.setBackgroundTintList(getResources().getColorStateList(R.color.defaultButtonColor));
         btnCash.setBackgroundTintList(getResources().getColorStateList(R.color.defaultButtonColor));

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -65,21 +66,23 @@
         android:id="@+id/searchBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/border_green"
+        android:padding="8dp"
         android:layout_marginBottom="16dp"
-        android:background="@color/white"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:gravity="center_vertical">
+
 
         <EditText
             android:id="@+id/searchEditText"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/border_green"
-            android:drawableLeft="@drawable/baseline_sports_cricket_24"
-            android:drawablePadding="8dp"
+            android:layout_weight="1"
             android:hint="Search Name, Area"
             android:padding="8dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"
+            android:textColorHint="@color/black" />
 
         <ImageView
             android:id="@+id/toggleImageView"
@@ -93,17 +96,17 @@
         android:id="@+id/turfInfoCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="0dp"
-        app:cardCornerRadius="20dp"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="12dp"
         app:cardElevation="8dp">
 
         <LinearLayout
             android:id="@+id/turfInfoLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/border_green"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="16dp"
+            android:background="@drawable/border_green">
 
             <!-- Placeholder Image -->
             <ImageView
