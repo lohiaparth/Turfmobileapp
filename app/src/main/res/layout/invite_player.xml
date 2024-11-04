@@ -40,6 +40,7 @@
 
         <Button
             android:id="@+id/btnInvite"
+            android:layout_marginBottom="40dp"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="5dp"
@@ -56,9 +57,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="350dp"
-        android:padding="16dp"
         android:background="@color/leafgreen"
         android:orientation="vertical"
+        android:padding="16dp"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -67,58 +68,19 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/anton"
             android:layout_marginLeft="80dp"
+            android:fontFamily="@font/anton"
             android:text="REQUEST"
             android:textColor="@color/red"
             android:textSize="70sp" />
 
         <!-- Email and Accept/Decline Buttons -->
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewReceivedRequests"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/border_green"
-            android:backgroundTint="@color/white"
-            android:orientation="horizontal"
-            android:padding="8dp">
-
-            <TextView
-                android:id="@+id/emailText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:fontFamily="@font/archivo_black"
-                android:padding="8dp"
-                android:text="siddhidmahajan@gmail.com"
-                android:textColor="@android:color/black" />
-
-            <!-- Spacer view to push buttons to the right -->
-            <View
-                android:layout_width="100dp"
-                android:layout_height="35dp"
-                android:layout_weight="1" />
-
-            <ImageButton
-                android:id="@+id/acceptButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/border_green"
-                android:backgroundTint="@color/darkgreen"
-                android:contentDescription="Accept"
-                android:src="@drawable/baseline_check_24" />
-
-            <ImageButton
-                android:id="@+id/declineButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/border_green"
-                android:backgroundTint="@color/darkgreen"
-                android:contentDescription="Decline"
-                android:src="@drawable/baseline_close_24" />
-        </LinearLayout>
+            android:layout_marginTop="20dp"
+            tools:listitem="@layout/item_received_invite" />
 
     </LinearLayout>
 
