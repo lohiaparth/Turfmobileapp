@@ -21,13 +21,13 @@ public class BookingPage extends AppCompatActivity {
 
     private static final String TAG = "BookingPage";
 
-    private EditText teamName, hours;
-    private TextView dateText, timeText, finalAmount;
-    private Button datePickerBtn, timePickerBtn, calculateAmountBtn, payNowBtn;
+    private EditText teamName;
+    private TextView dateText, timeText;
+    private Button datePickerBtn, timePickerBtn, payNowBtn;
+    private TextView timeSlotText;
+
 
     private FirebaseFirestore db;
-    private double turfPrice;
-    private int selectedHours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,21 +35,18 @@ public class BookingPage extends AppCompatActivity {
         setContentView(R.layout.activity_booking_page);
 
         db = FirebaseFirestore.getInstance();
-        turfPrice = getIntent().getDoubleExtra("turfPrice", 0.0);
 
         teamName = findViewById(R.id.firstName);
-        hours = findViewById(R.id.hours);
         dateText = findViewById(R.id.dateText);
         timeText = findViewById(R.id.timeText);
-        finalAmount = findViewById(R.id.finalAmount);
         datePickerBtn = findViewById(R.id.datePickerBtn);
         timePickerBtn = findViewById(R.id.timePickerBtn);
-        calculateAmountBtn = findViewById(R.id.calculateAmountBtn);
         payNowBtn = findViewById(R.id.payNowBtn);
+        timeSlotText = findViewById(R.id.timeSlotText);
+
 
         datePickerBtn.setOnClickListener(v -> showDatePickerDialog());
         timePickerBtn.setOnClickListener(v -> showTimePickerDialog());
-        calculateAmountBtn.setOnClickListener(v -> calculateFinalAmount());
         payNowBtn.setOnClickListener(v -> goToPayments());
     }
 
@@ -58,45 +55,33 @@ public class BookingPage extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                 (view, year, month, dayOfMonth) -> dateText.setText(dayOfMonth + "/" + (month + 1) + "/" + year),
                 calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+
+        // Set the minimum date to the current date
+        datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
         datePickerDialog.show();
     }
 
     private void showTimePickerDialog() {
         Calendar calendar = Calendar.getInstance();
         TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-                (view, hourOfDay, minute) -> timeText.setText(hourOfDay + ":" + String.format("%02d", minute)),
-                calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
+                (view, hourOfDay, minute) -> {
+                    // Check if the time falls between 4:00 AM and 12:00 AM
+                    if (hourOfDay >= 4 || hourOfDay == 0) {
+                        String startTime = String.format("%02d:%02d", hourOfDay, minute);
+                        String endTime = String.format("%02d:%02d", (hourOfDay + 1) % 24, minute);
+                        timeText.setText(startTime + " - " + endTime);
+                        timeSlotText.setText("Selected Time Slot: " + startTime + " - " + endTime);
+                    } else {
+                        Toast.makeText(this, "Time must be between 4:00 AM and 12:00 AM", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                calendar.get(Calendar.HOUR_OF_DAY), 0, true);
         timePickerDialog.show();
     }
 
-    private void calculateFinalAmount() {
-        if (hours.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "Please enter the number of hours", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
+    private void goToPayments() {
         if (dateText.getText().toString().isEmpty() || timeText.getText().toString().isEmpty()) {
             Toast.makeText(this, "Please select a date and time", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        try {
-            selectedHours = Integer.parseInt(hours.getText().toString().trim());
-            if (selectedHours <= 0) {
-                Toast.makeText(this, "Please enter a valid number of hours", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            double amount = turfPrice * selectedHours;
-            finalAmount.setText(String.format("Total: Rs. %.2f", amount));
-        } catch (NumberFormatException e) {
-            Toast.makeText(this, "Please enter a valid number of hours", Toast.LENGTH_SHORT).show();
-            Log.e(TAG, "Invalid hours input: " + e.getMessage());
-        }
-    }
-
-    private void goToPayments() {
-        if (finalAmount.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Please calculate the final amount before proceeding", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -109,18 +94,15 @@ public class BookingPage extends AppCompatActivity {
         String team = teamName.getText().toString().trim();
         String date = dateText.getText().toString();
         String time = timeText.getText().toString();
-        String amount = finalAmount.getText().toString().replace("Total: Rs. ", ""); // Extract amount value
-        int hoursBooked = selectedHours;
 
         // Save booking to Firestore
-        db.collection("bookings").add(new Booking(team, date, time, amount, hoursBooked))
+        db.collection("bookings").add(new Booking(team, date, time))
                 .addOnSuccessListener(documentReference -> {
                     Toast.makeText(this, "Booking saved successfully!", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "Booking saved with ID: " + documentReference.getId());
 
                     // Proceed to payment activity
                     Intent intent = new Intent(BookingPage.this, Payments.class);
-                    intent.putExtra("finalAmount", finalAmount.getText().toString());
                     intent.putExtra("date", dateText.getText().toString());
                     intent.putExtra("time", timeText.getText().toString());
                     startActivity(intent);
@@ -136,10 +118,8 @@ public class BookingPage extends AppCompatActivity {
 
     private void clearFields() {
         teamName.setText("");
-        hours.setText("");
         dateText.setText("");
         timeText.setText("");
-        finalAmount.setText("");
     }
 
     // Define the Booking class to represent booking data
@@ -147,22 +127,16 @@ public class BookingPage extends AppCompatActivity {
         private String teamName;
         private String dateText;
         private String timeText;
-        private String finalAmount;
-        private int hours;
 
-        public Booking(String teamName, String dateText, String timeText, String finalAmount, int hours) {
+        public Booking(String teamName, String dateText, String timeText) {
             this.teamName = teamName;
             this.dateText = dateText;
             this.timeText = timeText;
-            this.finalAmount = finalAmount;
-            this.hours = hours;
         }
 
         // Getters are required for Firestore serialization
         public String getTeamName() { return teamName; }
         public String getDateText() { return dateText; }
         public String getTimeText() { return timeText; }
-        public String getFinalAmount() { return finalAmount; }
-        public int getHours() { return hours; }
     }
 }

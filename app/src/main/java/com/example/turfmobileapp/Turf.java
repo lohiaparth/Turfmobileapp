@@ -1,4 +1,3 @@
-// Turf.java
 package com.example.turfmobileapp;
 
 public class Turf {
@@ -8,7 +7,7 @@ public class Turf {
     private String contact;
     private String address;
     private String sport;
-    private String price;
+    private Object price; // Change to Object to handle both String and int
     private String image;
 
     // No-argument constructor for Firestore
@@ -52,10 +51,11 @@ public class Turf {
     public void setSport(String sport) { this.sport = sport; }
 
     public String getPrice() {
-        return price;
+        // Convert price to String if it's stored as an int in Firestore
+        return price != null ? price.toString() : null;
     }
 
-    public void setPrice(String price) { this.price = price; }
+    public void setPrice(Object price) { this.price = price; }
 
     public String getImage() {
         return image;
