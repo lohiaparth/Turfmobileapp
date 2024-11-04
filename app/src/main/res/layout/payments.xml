@@ -1,14 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/leafgreen"
+    tools:context=".Payments">
 
-    <TextView
-        android:id="@+id/textView5"
+    <!-- Payment Mode Buttons -->
+    <LinearLayout
+        android:id="@+id/paymentModes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="payments"
-        tools:layout_editor_absoluteX="180dp"
-        tools:layout_editor_absoluteY="356dp" />
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/btnCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="CARD"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:cornerRadius="10dp"/>
+
+        <Button
+            android:id="@+id/btnGpay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="GPAY"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:cornerRadius="10dp"/>
+
+        <Button
+            android:id="@+id/btnCash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="CASH"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:cornerRadius="10dp"/>
+    </LinearLayout>
+
+    <!-- Payment Details CardView -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/paymentDetailsCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp"
+        app:layout_constraintTop_toBottomOf="@id/paymentModes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:background="@color/white">
+
+            <!-- Payment Mode Title -->
+            <TextView
+                android:id="@+id/paymentTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Details"
+                android:textColor="@color/darkgreen"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+
+            <!-- Card Payment Fields -->
+            <LinearLayout
+                android:id="@+id/cardPaymentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Card Number"
+                    android:background="@drawable/border_green"
+                    android:padding="12dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:hint="Expiry Date"
+                    android:background="@drawable/border_green"
+                    android:padding="12dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:hint="CVV"
+                    android:background="@drawable/border_green"
+                    android:padding="12dp"/>
+            </LinearLayout>
+
+            <!-- GPay Payment Instructions -->
+            <LinearLayout
+                android:id="@+id/gpayPaymentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Scan QR code with GPay"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"/>
+
+                <!-- Placeholder for QR Code -->
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/leafgreen"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <!-- Cash Payment Note -->
+            <LinearLayout
+                android:id="@+id/cashPaymentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="An extra ₹50 will be charged for cash payments"
+                    android:textColor="@color/red"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <!-- Pay Now Button -->
+            <Button
+                android:id="@+id/btnPayNow"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/leafgreen"
+                android:text="Pay Now"
+                android:textSize="18sp"
+                app:cornerRadius="20dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
