@@ -10,10 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="380dp"
-        android:padding="16dp"
         android:background="@android:color/white"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -41,6 +42,7 @@
         <Button
             android:id="@+id/btnInvite"
             android:layout_width="match_parent"
+            android:layout_marginBottom="20dp"
             android:layout_height="45dp"
             android:layout_marginTop="5dp"
             android:backgroundTint="@color/leafgreen"
@@ -53,13 +55,14 @@
 
     <!-- Green Container for "REQUEST" -->
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="350dp"
-        android:padding="16dp"
         android:background="@color/leafgreen"
         android:orientation="vertical"
 
+        android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -67,8 +70,8 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/anton"
             android:layout_marginLeft="80dp"
+            android:fontFamily="@font/anton"
             android:text="REQUEST"
             android:textColor="@color/red"
             android:textSize="70sp" />
