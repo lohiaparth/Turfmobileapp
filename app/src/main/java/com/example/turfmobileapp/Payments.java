@@ -70,9 +70,9 @@ public class Payments extends AppCompatActivity {
         gpayPaymentLayout.setVisibility(View.GONE);
         cashPaymentLayout.setVisibility(View.GONE);
 
-        btnCard.setBackgroundTintList(getResources().getColorStateList(R.color.selectedButtonColor));
-        btnGpay.setBackgroundTintList(getResources().getColorStateList(R.color.defaultButtonColor));
-        btnCash.setBackgroundTintList(getResources().getColorStateList(R.color.defaultButtonColor));
+        btnCard.setBackgroundTintList(getResources().getColorStateList(R.color.darkgreen));
+        btnGpay.setBackgroundTintList(getResources().getColorStateList(R.color.green));
+        btnCash.setBackgroundTintList(getResources().getColorStateList(R.color.green));
     }
 
     // Method to show the GPay payment layout
@@ -83,9 +83,9 @@ public class Payments extends AppCompatActivity {
         cashPaymentLayout.setVisibility(View.GONE);
 
         // Update button styles
-        btnCard.setBackgroundTintList(getResources().getColorStateList(R.color.defaultButtonColor));
-        btnGpay.setBackgroundTintList(getResources().getColorStateList(R.color.selectedButtonColor));
-        btnCash.setBackgroundTintList(getResources().getColorStateList(R.color.defaultButtonColor));
+        btnCard.setBackgroundTintList(getResources().getColorStateList(R.color.green));
+        btnGpay.setBackgroundTintList(getResources().getColorStateList(R.color.darkgreen));
+        btnCash.setBackgroundTintList(getResources().getColorStateList(R.color.green));
     }
 
     // Method to show the cash payment layout
@@ -96,8 +96,8 @@ public class Payments extends AppCompatActivity {
         cashPaymentLayout.setVisibility(View.VISIBLE);
 
         // Update button styles
-        btnCard.setBackgroundTintList(getResources().getColorStateList(R.color.defaultButtonColor));
-        btnGpay.setBackgroundTintList(getResources().getColorStateList(R.color.defaultButtonColor));
-        btnCash.setBackgroundTintList(getResources().getColorStateList(R.color.selectedButtonColor));
+        btnCard.setBackgroundTintList(getResources().getColorStateList(R.color.green));
+        btnGpay.setBackgroundTintList(getResources().getColorStateList(R.color.green));
+        btnCash.setBackgroundTintList(getResources().getColorStateList(R.color.darkgreen));
     }
 }

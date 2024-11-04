@@ -16,7 +16,6 @@
         android:textColor="@color/red"
         android:textSize="70sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,10 +26,10 @@
         android:text="Select Date"
         android:fontFamily="@font/archivo_black"
         android:backgroundTint="@color/white"
+        android:textColor="@color/leafgreen"
         app:layout_constraintTop_toBottomOf="@id/scheduleTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="@color/leafgreen"
         android:layout_marginBottom="16dp" />
 
     <TextView
@@ -40,125 +39,227 @@
         android:text="Date: Today"
         android:textSize="18sp"
         android:textColor="@color/black"
+        android:fontFamily="@font/archivo_black"
         app:layout_constraintTop_toBottomOf="@id/selectDateButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="@font/archivo_black" />
+        android:layout_marginBottom="16dp" />
+
+    <!-- Spinner for selecting turf -->
+    <Spinner
+        android:id="@+id/turfSpinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/selectedDateText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="16dp" />
+
 
     <GridLayout
         android:id="@+id/timetableGridLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:columnCount="2"
         android:layout_marginTop="60dp"
-        android:columnCount="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/selectedDateText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectedDateText"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Repeat similar structure for each time slot -->
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!-- Time slot row 1 -->
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingVertical="8dp">
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="start"
+            android:padding="10dp"
+            android:text="8:00 AM - 9:00 AM" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="8:00 AM - 9:00 AM"
-                android:gravity="start"
-                android:fontFamily="@font/archivo_black"/>
-
-            <TextView
-                android:id="@+id/slot_8_9"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Available"
-                android:gravity="end"
-                android:fontFamily="@font/archivo_black"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/slot_8_9"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingVertical="8dp">
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="end"
+            android:padding="10dp"
+            android:text="Available" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="9:00 AM - 10:00 AM"
-                android:gravity="start"
-                android:fontFamily="@font/archivo_black"/>
-
-            <TextView
-                android:id="@+id/slot_9_10"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Available"
-                android:gravity="end"
-                android:fontFamily="@font/archivo_black"/>
-        </LinearLayout>
-
-        <!-- Continue for remaining slots -->
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!-- Time slot row 2 -->
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingVertical="8dp">
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="start"
+            android:padding="10dp"
+            android:text="9:00 AM - 10:00 AM" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="10:00 AM - 11:00 AM"
-                android:gravity="start"
-                android:fontFamily="@font/archivo_black"/>
-
-            <TextView
-                android:id="@+id/slot_10_11"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Available"
-                android:gravity="end"
-                android:fontFamily="@font/archivo_black"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/slot_9_10"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingVertical="8dp">
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="end"
+            android:padding="10dp"
+            android:text="Available" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="11:00 AM - 12:00 PM"
-                android:gravity="start"
-                android:fontFamily="@font/archivo_black"/>
+        <!-- Additional rows for other time slots -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="start"
+            android:padding="10dp"
+            android:text="10:00 AM - 11:00 AM" />
 
-            <TextView
-                android:id="@+id/slot_11_12"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Available"
-                android:gravity="end"
-                android:fontFamily="@font/archivo_black"/>
-        </LinearLayout>
+        <TextView
+            android:id="@+id/slot_10_11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="end"
+            android:padding="10dp"
+            android:text="Available" />
 
-        <!-- Add more LinearLayouts for additional slots -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="start"
+            android:padding="10dp"
+            android:text="11:00 AM - 12:00 AM" />
+
+        <TextView
+            android:id="@+id/slot_11_12"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="end"
+            android:padding="10dp"
+            android:text="Available" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="start"
+            android:padding="10dp"
+            android:text="12:00 AM - 1:00 PM" />
+
+        <TextView
+            android:id="@+id/slot_12_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="end"
+            android:padding="10dp"
+            android:text="Available" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="start"
+            android:padding="10dp"
+            android:text="1:00 PM - 2:00 PM" />
+
+        <TextView
+            android:id="@+id/slot_1_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="end"
+            android:padding="10dp"
+            android:text="Available" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="start"
+            android:padding="10dp"
+            android:text="2:00 PM - 3:00 PM" />
+
+        <TextView
+            android:id="@+id/slot_2_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="end"
+            android:padding="10dp"
+            android:text="Available" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="start"
+            android:padding="10dp"
+            android:text="3:00 PM - 4:00 PM" />
+
+        <TextView
+            android:id="@+id/slot_3_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="end"
+            android:padding="10dp"
+            android:text="Available" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="start"
+            android:padding="10dp"
+            android:text="4:00 AM - 5:00 AM" />
+
+        <TextView
+            android:id="@+id/slot_4_5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="end"
+            android:padding="10dp"
+            android:text="Available" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="start"
+            android:padding="10dp"
+            android:text="5:00 AM - 6:00 AM" />
+
+        <TextView
+            android:id="@+id/slot_5_6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="end"
+            android:padding="10dp"
+            android:text="Available" />
+        <!-- More time slots can be added similarly -->
 
     </GridLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
