@@ -14,7 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button inviteplayer_btn, viewteam_btn, findturf_btn; // USER BUTTONS
+    private Button inviteplayer_btn, viewteam_btn, findturf_btn, listteam_btn; // USER BUTTONS
     private Button listturf_btn, schedule_btn, payments_btn; // OWNER BUTTONS
 
     @Override
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         inviteplayer_btn = findViewById(R.id.inviteplayer_btn);
         viewteam_btn = findViewById(R.id.viewteam_btn);
         findturf_btn = findViewById(R.id.findturf_btn);
-//        listteam_btn = findViewById(R.id.listmyteam_btn);
+        listteam_btn = findViewById(R.id.listmyteam_btn);
         listturf_btn = findViewById(R.id.listturf_btn);
 //        requests_btn = findViewById(R.id.request_btn);
         schedule_btn = findViewById(R.id.schedule_btn);
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         inviteplayer_btn.setVisibility(userVisibility);
         viewteam_btn.setVisibility(userVisibility);
         findturf_btn.setVisibility(userVisibility);
-//        listteam_btn.setVisibility(userVisibility);
+        listteam_btn.setVisibility(userVisibility);
     }
 
     private void setButtonListeners() {
@@ -81,6 +81,6 @@ public class MainActivity extends AppCompatActivity {
         inviteplayer_btn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, InvitePlayer.class)));
         viewteam_btn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ViewTeam.class)));
         findturf_btn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, FindTurf.class)));
-//        listteam_btn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ListTeam.class)));
+        listteam_btn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ListTeam.class)));
     }
 }

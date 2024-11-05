@@ -50,6 +50,7 @@ public class ListTeam extends AppCompatActivity {
         joinTeamBtn = findViewById(R.id.jointeam_btn);
         abandonTeamBtn = findViewById(R.id.abandonteam_btn);
         teamNameInput = findViewById(R.id.team_name_input);
+        searchTeamBtn = findViewById(R.id.search_team_btn);
 
         // Initially hide the submit button and team name input
         submitBtn.setVisibility(View.INVISIBLE);

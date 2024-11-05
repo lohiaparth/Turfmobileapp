@@ -55,22 +55,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewteam_btn" />
 
-<!--    <androidx.appcompat.widget.AppCompatButton-->
-<!--        android:id="@+id/listmyteam_btn"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="100dp"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginTop="24dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:background="@color/leafgreen"-->
-<!--        android:fontFamily="@font/archivo_black"-->
-<!--        android:text="List Team"-->
-<!--        android:textColor="@color/darkgreen"-->
-<!--        android:textSize="40sp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/findturf_btn" />-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/listmyteam_btn"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/leafgreen"
+        android:fontFamily="@font/archivo_black"
+        android:text="List Team"
+        android:textColor="@color/darkgreen"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/findturf_btn" />
 
 <!--    <androidx.appcompat.widget.AppCompatButton-->
 <!--        android:id="@+id/request_btn"-->
@@ -91,7 +91,6 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/schedule_btn"
-        android:text="Schedule"
         android:layout_width="0dp"
         android:layout_height="120dp"
         android:layout_marginStart="16dp"
@@ -99,10 +98,11 @@
         android:layout_marginEnd="16dp"
         android:background="@color/leafgreen"
         android:fontFamily="@font/archivo_black"
+        android:text="Schedule"
         android:textColor="@color/darkgreen"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
