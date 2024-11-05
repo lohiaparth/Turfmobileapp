@@ -44,38 +44,56 @@
         android:padding="10dp"
         android:fontFamily="@font/archivo_black"/>
 
-    <EditText
-        android:id="@+id/team_name_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border_green"
-        android:drawableLeft="@drawable/baseline_email_24"
-        android:drawablePadding="8dp"
-        android:hint="Enter Team Name:"
-        android:ems="10"
-        android:padding="10dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black" />
-
-    <Button
-        android:id="@+id/submit_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/green"
-        android:layout_marginTop="5dp"
-        android:text="Submit"
-        android:textSize="20sp"
-        android:padding="10dp"
-        android:fontFamily="@font/archivo_black"/>
-
     <Button
         android:id="@+id/abandonteam_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/red"
-        android:text="Leave Team"
-        android:textSize="20sp"
+        android:fontFamily="@font/archivo_black"
         android:padding="10dp"
-        android:fontFamily="@font/archivo_black"/> <!-- Disabled by default -->
+        android:text="Leave Team"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/team_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border_green"
+        android:drawableLeft="@drawable/baseline_email_24"
+        android:drawablePadding="8dp"
+        android:ems="10"
+        android:hint="Enter Team Name:"
+        android:padding="10dp"
+        android:textColor="@color/black" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/submit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/archivo_black"
+            android:padding="10dp"
+            android:text="Submit"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/search_team_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/archivo_black"
+            android:padding="10dp"
+            android:text="Search"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <!-- Disabled by default -->
 
 </LinearLayout>
