@@ -31,7 +31,6 @@
                 android:textSize="70sp"
                 android:textStyle="bold" />
 
-            <!-- User Type RadioGroup -->
             <RadioGroup
                 android:id="@+id/userTypeGroup"
                 android:layout_width="match_parent"
@@ -54,7 +53,6 @@
 
             </RadioGroup>
 
-            <!-- Name Field -->
             <EditText
                 android:id="@+id/nameSignup"
                 android:layout_width="match_parent"
@@ -67,7 +65,6 @@
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
-            <!-- Email Field -->
             <EditText
                 android:id="@+id/emailSignup"
                 android:layout_width="match_parent"
@@ -81,7 +78,6 @@
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
-            <!-- Contact Field -->
             <EditText
                 android:id="@+id/contactSignup"
                 android:layout_width="match_parent"
@@ -95,7 +91,6 @@
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
-            <!-- Age Field -->
             <EditText
                 android:id="@+id/ageSignup"
                 android:layout_width="match_parent"
@@ -109,7 +104,6 @@
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
-            <!-- Password Field -->
             <EditText
                 android:id="@+id/passwordSignup"
                 android:layout_width="match_parent"
@@ -123,7 +117,6 @@
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
-            <!-- Confirm Password Field -->
             <EditText
                 android:id="@+id/repasswordSignup"
                 android:layout_width="match_parent"
@@ -137,9 +130,6 @@
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
-            <!-- Signup Button -->
-
-            <!-- Login TextView -->
             <Button
                 android:id="@+id/btnSignup"
                 android:layout_width="match_parent"

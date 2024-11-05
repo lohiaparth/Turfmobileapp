@@ -45,16 +45,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="16dp" />
 
-    <!-- Spinner for selecting turf -->
-    <Spinner
-        android:id="@+id/turfSpinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/selectedDateText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="16dp" />
+<!--    <Spinner-->
+<!--        android:id="@+id/turfSpinner"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/selectedDateText"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_marginBottom="16dp" />-->
 
 
     <GridLayout
@@ -67,7 +66,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Time slot row 1 -->
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -87,7 +85,6 @@
             android:padding="10dp"
             android:text="Available" />
 
-        <!-- Time slot row 2 -->
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -107,7 +104,6 @@
             android:padding="10dp"
             android:text="Available" />
 
-        <!-- Additional rows for other time slots -->
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -259,7 +255,6 @@
             android:gravity="end"
             android:padding="10dp"
             android:text="Available" />
-        <!-- More time slots can be added similarly -->
 
     </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

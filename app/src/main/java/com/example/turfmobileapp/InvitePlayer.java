@@ -36,18 +36,14 @@ public class InvitePlayer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.invite_player);
 
-        // Initialize UI elements
         btnInvite = findViewById(R.id.btnInvite);
         emailInvite = findViewById(R.id.emailInvite);
 
-        // Initialize FirebaseAuth and FirebaseFirestore
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        // Fetch the current user's team ID
         fetchCurrentUserTeamId();
 
-        // Fetch received invites for the current user
         fetchReceivedInvites();
 
         btnInvite.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +51,7 @@ public class InvitePlayer extends AppCompatActivity {
             public void onClick(View view) {
                 String email = emailInvite.getText().toString().trim();
                 if (!email.isEmpty()) {
-                    findUserByEmail(email); // Search for the receiver's email
+                    findUserByEmail(email);
                 } else {
                     Toast.makeText(InvitePlayer.this, "Please enter an email address", Toast.LENGTH_SHORT).show();
                 }
@@ -125,18 +121,17 @@ public class InvitePlayer extends AppCompatActivity {
             return;
         }
 
-        String status = "pending"; // Default status for a new invite
-        long timestamp = System.currentTimeMillis(); // Current time as timestamp
+        String status = "pending";
+        long timestamp = System.currentTimeMillis();
 
         // Create invite data
         Map<String, Object> inviteData = new HashMap<>();
-        inviteData.put("senderEmail", senderEmail); // Use sender's email
-        inviteData.put("receiverEmail", receiverEmail); // Use receiver's email
+        inviteData.put("senderEmail", senderEmail);
+        inviteData.put("receiverEmail", receiverEmail);
         inviteData.put("status", status);
-        inviteData.put("teamId", senderTeamId); // Use the sender's team ID
+        inviteData.put("teamId", senderTeamId);
         inviteData.put("timestamp", timestamp);
 
-        // Add the invite document to the "invites" collection
         db.collection("invites")
                 .add(inviteData)
                 .addOnSuccessListener(documentReference -> {
@@ -158,10 +153,9 @@ public class InvitePlayer extends AppCompatActivity {
                         List<Map<String, Object>> receivedInvites = new ArrayList<>();
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             Map<String, Object> invite = document.getData();
-                            invite.put("id", document.getId()); // Store document ID for updating status
+                            invite.put("id", document.getId());
                             receivedInvites.add(invite);
                         }
-                        // Set the adapter with the data
                         setupReceivedInvitesRecyclerView(receivedInvites);
                     } else {
                         Toast.makeText(this, "Error fetching received invites.", Toast.LENGTH_SHORT).show();

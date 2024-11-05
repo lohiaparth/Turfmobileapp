@@ -7,7 +7,6 @@
     android:background="@color/white"
     tools:context=".Payments">
 
-    <!-- Payment Mode Buttons -->
     <TextView
         android:id="@+id/paymentHeading"
         android:layout_width="wrap_content"
@@ -22,7 +21,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Payment Details CardView -->
 
     <LinearLayout
         android:id="@+id/paymentModes"
@@ -148,7 +146,6 @@
                     android:padding="12dp" />
             </LinearLayout>
 
-            <!-- GPay Payment Instructions -->
             <LinearLayout
                 android:id="@+id/gpayPaymentLayout"
                 android:layout_width="match_parent"
@@ -166,7 +163,6 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/archivo_black"/>
 
-                <!-- Placeholder for QR Code -->
                 <ImageView
                     android:id="@+id/qrCodePlaceholder"
                     android:layout_width="150dp"
@@ -176,7 +172,6 @@
                     android:layout_gravity="center" />
             </LinearLayout>
 
-            <!-- Cash Payment Note -->
             <LinearLayout
                 android:id="@+id/cashPaymentLayout"
                 android:layout_width="match_parent"
@@ -195,7 +190,6 @@
                     android:fontFamily="@font/archivo"/>
             </LinearLayout>
 
-            <!-- Pay Now Button -->
 
             <TextView
                 android:id="@+id/amountTextView"

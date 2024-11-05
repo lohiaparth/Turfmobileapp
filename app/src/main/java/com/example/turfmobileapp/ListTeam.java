@@ -30,35 +30,30 @@ public class ListTeam extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
 
-    private String currentTeamId; // User's current team ID
-    private boolean isTeamLeader; // Indicates if the user is a team leader
+    private String currentTeamId;
+    private boolean isTeamLeader;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_team);
 
-        // Initialize Firebase Firestore and Auth
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
-        // Initialize UI elements
 //        listMyTeamBtn = findViewById(R.id.listmyteam_btn);
         submitBtn = findViewById(R.id.submit_btn);
         createTeamBtn = findViewById(R.id.createteam_btn);
         joinTeamBtn = findViewById(R.id.jointeam_btn);
-        abandonTeamBtn = findViewById(R.id.abandonteam_btn); // New button for abandoning or disbanding team
+        abandonTeamBtn = findViewById(R.id.abandonteam_btn);
         teamNameInput = findViewById(R.id.team_name_input);
 
-        // Initially hide the submit button and team name input
         submitBtn.setVisibility(View.INVISIBLE);
         teamNameInput.setVisibility(View.INVISIBLE);
 
-        // Load user's team status from Firestore
         loadUserTeamStatus();
 
-        // Set click listeners
         createTeamBtn.setOnClickListener(view -> showTeamNameInput());
         submitBtn.setOnClickListener(view -> submitTeamName());
         joinTeamBtn.setOnClickListener(view -> joinTeam());
@@ -85,21 +80,18 @@ public class ListTeam extends AppCompatActivity {
 
     private void updateUIBasedOnTeamStatus() {
         if (currentTeamId != null) {
-            // User is part of a team
 //            listMyTeamBtn.setVisibility(View.VISIBLE);
             createTeamBtn.setEnabled(false);
             createTeamBtn.setVisibility(View.INVISIBLE);
             teamNameInput.setVisibility(View.INVISIBLE);
             submitBtn.setVisibility(View.INVISIBLE);
 
-            // Change abandon button's text based on whether the user is a leader or member
             if (isTeamLeader) {
                 abandonTeamBtn.setText("Disband Team"); // Team leader can disband the team
             } else {
                 abandonTeamBtn.setText("Leave Team"); // Regular members can leave the team
             }
         } else {
-            // User is not part of a team
             createTeamBtn.setEnabled(true);
             createTeamBtn.setVisibility(View.VISIBLE);
             joinTeamBtn.setVisibility(View.VISIBLE);
@@ -108,7 +100,6 @@ public class ListTeam extends AppCompatActivity {
     }
 
     private void showTeamNameInput() {
-        // Show input field for team name and submit button
         submitBtn.setVisibility(View.VISIBLE);
         teamNameInput.setVisibility(View.VISIBLE);
     }
@@ -157,7 +148,6 @@ public class ListTeam extends AppCompatActivity {
     }
 
     private void updateUserTeamInfo(String userId, String teamId) {
-        // Set user's teamId and isTeamLeader status to true in Firestore
         db.collection("users").document(userId).update("teamId", teamId, "isTeamLeader", true)
                 .addOnSuccessListener(aVoid ->
                         Toast.makeText(ListTeam.this, "User updated with team information!", Toast.LENGTH_SHORT).show()

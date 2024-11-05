@@ -5,7 +5,6 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent">
 
-<!-- Title TextView for "MY TEAM" -->
 <TextView
     android:id="@+id/textView2"
     android:layout_width="wrap_content"
@@ -19,7 +18,6 @@ android:layout_height="match_parent">
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
-<!-- RecyclerView to display team members dynamically -->
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/requestRecyclerView"
     android:layout_width="0dp"

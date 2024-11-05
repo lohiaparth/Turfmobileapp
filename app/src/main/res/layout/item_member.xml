@@ -7,9 +7,7 @@
     android:orientation="vertical"
     android:padding="8dp">
 
-    <!-- Name Field -->
 
-    <!-- Age Field -->
     <TextView
         android:id="@+id/memberNameTextView"
         android:layout_width="wrap_content"
@@ -30,7 +28,6 @@
         android:textColor="@color/darkgreen"
         android:textSize="16sp" />
 
-    <!-- Contact Field -->
     <TextView
         android:id="@+id/memberContactTextView"
         android:layout_width="wrap_content"

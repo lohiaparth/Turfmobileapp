@@ -7,7 +7,6 @@
     android:padding="12dp"
     android:layout_marginBottom="8dp">
 
-    <!-- Request Info -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -42,7 +41,6 @@
             android:textColor="@color/darkgreen" />
     </LinearLayout>
 
-    <!-- Approve and Decline Buttons -->
     <ImageView
         android:id="@+id/approveButton"
         android:layout_width="30dp"

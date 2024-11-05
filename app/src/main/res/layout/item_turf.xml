@@ -14,7 +14,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Image -->
         <ImageView
             android:id="@+id/turfImageView"
             android:layout_width="match_parent"
@@ -22,13 +21,11 @@
             android:scaleType="centerCrop"
             android:src="@drawable/turf" />
 
-        <!-- Turf Information and Book Button in ConstraintLayout -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp">
 
-            <!-- Turf Name -->
             <TextView
                 android:id="@+id/turfNameText"
                 android:layout_width="0dp"
@@ -40,7 +37,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Sports Text -->
             <TextView
                 android:id="@+id/sportsText"
                 android:layout_width="0dp"
@@ -51,7 +47,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/buttonBookNow" />
 
-            <!-- Location Text -->
             <TextView
                 android:id="@+id/locationText"
                 android:layout_width="0dp"
@@ -62,7 +57,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/buttonBookNow" />
 
-            <!-- Price Text -->
             <TextView
                 android:id="@+id/priceText"
                 android:layout_width="0dp"
@@ -74,7 +68,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/buttonBookNow" />
 
-            <!-- Book Now Button -->
             <Button
                 android:id="@+id/buttonBookNow"
                 android:layout_width="wrap_content"

@@ -56,7 +56,6 @@ public class BookingPage extends AppCompatActivity {
                 (view, year, month, dayOfMonth) -> dateText.setText(dayOfMonth + "/" + (month + 1) + "/" + year),
                 calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
 
-        // Set the minimum date to the current date
         datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
         datePickerDialog.show();
     }
@@ -65,7 +64,6 @@ public class BookingPage extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                 (view, hourOfDay, minute) -> {
-                    // Check if the time falls between 4:00 AM and 12:00 AM
                     if (hourOfDay >= 4 || hourOfDay == 0) {
                         String startTime = String.format("%02d:%02d", hourOfDay, minute);
                         String endTime = String.format("%02d:%02d", (hourOfDay + 1) % 24, minute);
@@ -90,24 +88,20 @@ public class BookingPage extends AppCompatActivity {
             return;
         }
 
-        // Retrieve data from input fields
         String team = teamName.getText().toString().trim();
         String date = dateText.getText().toString();
         String time = timeText.getText().toString();
 
-        // Save booking to Firestore
         db.collection("bookings").add(new Booking(team, date, time))
                 .addOnSuccessListener(documentReference -> {
                     Toast.makeText(this, "Booking saved successfully!", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "Booking saved with ID: " + documentReference.getId());
 
-                    // Proceed to payment activity
                     Intent intent = new Intent(BookingPage.this, Payments.class);
                     intent.putExtra("date", dateText.getText().toString());
                     intent.putExtra("time", timeText.getText().toString());
                     startActivity(intent);
 
-                    // Clear fields after saving
                     clearFields();
                 })
                 .addOnFailureListener(e -> {
@@ -122,7 +116,6 @@ public class BookingPage extends AppCompatActivity {
         timeText.setText("");
     }
 
-    // Define the Booking class to represent booking data
     public class Booking {
         private String teamName;
         private String dateText;
@@ -134,7 +127,6 @@ public class BookingPage extends AppCompatActivity {
             this.timeText = timeText;
         }
 
-        // Getters are required for Firestore serialization
         public String getTeamName() { return teamName; }
         public String getDateText() { return dateText; }
         public String getTimeText() { return timeText; }

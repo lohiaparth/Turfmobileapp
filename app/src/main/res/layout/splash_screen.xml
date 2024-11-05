@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <!-- Turf Title -->
-
-    <!-- Subtitle -->
-
-    <!-- Grass Image -->
-
-    <!-- Football Image -->
     <TextView
         android:id="@+id/turfTitle"
         android:layout_width="wrap_content"
