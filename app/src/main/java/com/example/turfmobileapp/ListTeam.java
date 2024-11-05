@@ -1,6 +1,7 @@
 package com.example.turfmobileapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,20 +25,21 @@ import java.util.UUID;
 
 public class ListTeam extends AppCompatActivity {
 
-    private Button listMyTeamBtn, submitBtn, createTeamBtn, joinTeamBtn, abandonTeamBtn;
+    private Button listMyTeamBtn, submitBtn, createTeamBtn, joinTeamBtn, abandonTeamBtn, searchTeamBtn;
     private EditText teamNameInput;
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
 
-    private String currentTeamId;
-    private boolean isTeamLeader;
+    private String currentTeamId; // User's current team ID
+    private boolean isTeamLeader; // Indicates if the user is a team leader
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_team);
 
+        // Initialize Firebase Firestore and Auth
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
@@ -49,16 +51,20 @@ public class ListTeam extends AppCompatActivity {
         abandonTeamBtn = findViewById(R.id.abandonteam_btn);
         teamNameInput = findViewById(R.id.team_name_input);
 
+        // Initially hide the submit button and team name input
         submitBtn.setVisibility(View.INVISIBLE);
+        searchTeamBtn.setVisibility(View.INVISIBLE);
         teamNameInput.setVisibility(View.INVISIBLE);
 
+        // Load user's team status from Firestore
         loadUserTeamStatus();
 
+        // Set click listeners
         createTeamBtn.setOnClickListener(view -> showTeamNameInput());
         submitBtn.setOnClickListener(view -> submitTeamName());
-        joinTeamBtn.setOnClickListener(view -> joinTeam());
-//        listMyTeamBtn.setOnClickListener(view -> listMyTeam());
-        abandonTeamBtn.setOnClickListener(view -> abandonTeam()); // Set click listener for abandon team button
+        joinTeamBtn.setOnClickListener(view -> showTeamSearchInput());
+        abandonTeamBtn.setOnClickListener(view -> abandonTeam());
+        searchTeamBtn.setOnClickListener(view -> searchTeamName()); // Set click listener for searching a team
     }
 
     private void loadUserTeamStatus() {
@@ -80,29 +86,41 @@ public class ListTeam extends AppCompatActivity {
 
     private void updateUIBasedOnTeamStatus() {
         if (currentTeamId != null) {
-//            listMyTeamBtn.setVisibility(View.VISIBLE);
+            // User is part of a team
             createTeamBtn.setEnabled(false);
+            joinTeamBtn.setVisibility(View.INVISIBLE);
             createTeamBtn.setVisibility(View.INVISIBLE);
             teamNameInput.setVisibility(View.INVISIBLE);
             submitBtn.setVisibility(View.INVISIBLE);
+            searchTeamBtn.setVisibility(View.INVISIBLE);
 
+            // Change abandon button's text based on whether the user is a leader or member
             if (isTeamLeader) {
                 abandonTeamBtn.setText("Disband Team"); // Team leader can disband the team
             } else {
                 abandonTeamBtn.setText("Leave Team"); // Regular members can leave the team
             }
         } else {
+            // User is not part of a team
             createTeamBtn.setEnabled(true);
             createTeamBtn.setVisibility(View.VISIBLE);
             joinTeamBtn.setVisibility(View.VISIBLE);
-            abandonTeamBtn.setVisibility(View.INVISIBLE); // Hide abandon button if not part of any team
+            abandonTeamBtn.setVisibility(View.INVISIBLE);// Hide abandon button if not part of any team
         }
     }
 
     private void showTeamNameInput() {
+        // Show input field for team name and submit button
         submitBtn.setVisibility(View.VISIBLE);
         teamNameInput.setVisibility(View.VISIBLE);
     }
+    private void showTeamSearchInput() {
+        // Show input field for team name and submit button
+        searchTeamBtn.setVisibility(View.VISIBLE);
+        teamNameInput.setVisibility(View.VISIBLE);
+    }
+
+
 
     private void submitTeamName() {
         String teamName = teamNameInput.getText().toString().trim();
@@ -113,17 +131,63 @@ public class ListTeam extends AppCompatActivity {
         }
     }
 
-    private void joinTeam() {
-        // Placeholder for joining team functionality
-        Toast.makeText(ListTeam.this, "Join Team functionality to be implemented", Toast.LENGTH_SHORT).show();
+    private void searchTeamName() {
+        String teamName = teamNameInput.getText().toString().trim();
+        if (teamName.isEmpty()) {
+            Toast.makeText(ListTeam.this, "Please enter a team name", Toast.LENGTH_SHORT).show();
+        } else {
+            db.collection("teams")
+                    .whereEqualTo("teamName", teamName)
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                            // Team found, get the leaderId
+                            DocumentSnapshot teamDoc = task.getResult().getDocuments().get(0);
+                            String leaderId = teamDoc.getString("leaderId");
+
+                            if (leaderId != null) {
+                                // Query Firestore to get the leader's email using the leaderId
+                                db.collection("users").document(leaderId)
+                                        .get()
+                                        .addOnCompleteListener(userTask -> {
+                                            if (userTask.isSuccessful() && userTask.getResult().exists()) {
+                                                String leaderEmail = userTask.getResult().getString("email");
+
+                                                if (leaderEmail != null) {
+                                                    // Send an email to the leader requesting to join the team
+                                                    sendJoinRequestEmail(leaderEmail, teamName);
+                                                } else {
+                                                    Toast.makeText(this, "Leader's email not found", Toast.LENGTH_SHORT).show();
+                                                }
+                                            } else {
+                                                Toast.makeText(this, "Failed to retrieve leader's details", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            } else {
+                                Toast.makeText(this, "Leader ID not found for this team", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(this, "Team not found", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(e ->
+                            Toast.makeText(ListTeam.this, "Error searching for team: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                    );
+        }
     }
 
-    private void listMyTeam() {
-        loadUserTeamStatus();
-        if (currentTeamId != null) {
-            fetchTeamDetails(currentTeamId); // Show team details if user is part of a team
-        } else {
-            Toast.makeText(ListTeam.this, "You are not part of any team", Toast.LENGTH_SHORT).show();
+    private void sendJoinRequestEmail(String leaderEmail, String teamName) {
+        // Create an intent to open an email app with pre-filled email details
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse("mailto:" + leaderEmail));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Request to Join Team: " + teamName);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Hello,\n\nI would like to join your team \"" + teamName + "\".\n\nThank you!");
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send Email"));
+            Toast.makeText(this, "Join request email sent", Toast.LENGTH_SHORT).show();
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(this, "No email clients installed.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -133,14 +197,15 @@ public class ListTeam extends AppCompatActivity {
         Map<String, Object> teamData = new HashMap<>();
         teamData.put("teamName", teamName); // Set team name
         teamData.put("leaderId", currentUser.getUid()); // Set current user as team leader
-        teamData.put("members", new ArrayList<>(List.of(currentUser.getUid()))); // Initialize with empty members list
+        teamData.put("members", new ArrayList<>(List.of(currentUser.getUid()))); // Initialize with leader ID as member
         teamData.put("createdAt", FieldValue.serverTimestamp()); // Set creation timestamp
 
         db.collection("teams").document(teamId).set(teamData)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(ListTeam.this, "Team created successfully!", Toast.LENGTH_SHORT).show();
                     updateUserTeamInfo(currentUser.getUid(), teamId);// Update user's team information with the new team ID
-                    Intent intent = new Intent(ListTeam.this,ViewTeam.class);
+                    Intent intent = new Intent(ListTeam.this, ViewTeam.class);
+                    startActivity(intent);
                 })
                 .addOnFailureListener(e ->
                         Toast.makeText(ListTeam.this, "Error creating team: " + e.getMessage(), Toast.LENGTH_SHORT).show()
@@ -148,6 +213,7 @@ public class ListTeam extends AppCompatActivity {
     }
 
     private void updateUserTeamInfo(String userId, String teamId) {
+        // Set user's teamId and isTeamLeader status to true in Firestore
         db.collection("users").document(userId).update("teamId", teamId, "isTeamLeader", true)
                 .addOnSuccessListener(aVoid ->
                         Toast.makeText(ListTeam.this, "User updated with team information!", Toast.LENGTH_SHORT).show()
@@ -157,20 +223,20 @@ public class ListTeam extends AppCompatActivity {
                 );
     }
 
-    private void fetchTeamDetails(String teamId) {
-        db.collection("teams").document(teamId).get()
-                .addOnSuccessListener(documentSnapshot -> {
-                    if (documentSnapshot.exists()) {
-                        String teamName = documentSnapshot.getString("teamName"); // Fetch and display team name
-                        Toast.makeText(ListTeam.this, "Team Name: " + teamName, Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(ListTeam.this, "Team does not exist", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(e ->
-                        Toast.makeText(ListTeam.this, "Error fetching team details: " + e.getMessage(), Toast.LENGTH_SHORT).show()
-                );
-    }
+//    private void fetchTeamDetails(String teamId) {
+//        db.collection("teams").document(teamId).get()
+//                .addOnSuccessListener(documentSnapshot -> {
+//                    if (documentSnapshot.exists()) {
+//                        String teamName = documentSnapshot.getString("teamName"); // Fetch and display team name
+//                        Toast.makeText(ListTeam.this, "Team Name: " + teamName, Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Toast.makeText(ListTeam.this, "Team does not exist", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//                .addOnFailureListener(e ->
+//                        Toast.makeText(ListTeam.this, "Error fetching team details: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+//                );
+//    }
 
     private void abandonTeam() {
         // Check if the user is a team leader to decide between disbanding or leaving
